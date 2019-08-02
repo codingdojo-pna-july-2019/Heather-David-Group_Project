@@ -42,15 +42,15 @@
             </div>
             <div class="container-fluid">
                 <div class="container-flex mx-auto">
-                    <form action="/submitSignUp" method="post">
+                    <form action="/submitSignUp" method="post" onsubmit="return checkForm(this);">
                         <div class="form-group input-group">
                             <input name="fname" class="form-control" placeholder="First Name" type="text">
                         </div>
                         <div class="form-group input-group">
                             <input name="lname" class="form-control" placeholder="Last Name" type="text">
                         </div>
-                        <div>
-                            <small class="form-text text-left"><em>*Your username will be displayed as your "name" if you post on our site.</em></small>
+                        <div class="ml-3">
+                            <small class="form-text text-left"><em>*Your username will displayed in place of your name for events such as potluck sign-up sheets.</em></small>
                         </div>
                         <div class="form-group input-group">
                             <input name="username" class="form-control" placeholder="Username" type="text">
@@ -64,9 +64,35 @@
                         <div class="form-group input-group">
                             <input name="confirm_password" class="form-control" placeholder="Confirm Password" type="password">
                         </div>
-                        <div class="form-group input-group">
-                            <!-- space for events interested in -->
-                            <!-- Check box for over 21 -->
+                        <div class="mb-2">
+                            <small class="form-text text-center"><em>What events are you interested in receiving updates for?</em></small>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
+                            <input name="karaoke" type="checkbox" class="form-check-input" id="karaoke">
+                            <label class="form-check-label mr-3" for="karaoke">Karaoke</label>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
+                            <input name="trivia" type="checkbox" class="form-check-input" id="trivia">
+                            <label class="form-check-label mr-3" for="trivia">Trivia</label>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
+                            <input name="billiards" type="checkbox" class="form-check-input" id="billiards">
+                            <label class="form-check-label mr-3" for="billiards">Billiards</label>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
+                            <input name="sunday_football" type="checkbox" class="form-check-input" id="sunday_football">
+                            <label class="form-check-label mr-3" for="sunday_football">Sunday Football</label>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
+                            <input name="potluck" type="checkbox" class="form-check-input" id="potluck">
+                            <label class="form-check-label mr-3" for="potluck">Potlucks</label>
+                        </div>
+                        <div class="ml-1 mb-1">
+                            <small class="form-text text-center"><em>Please verify you are 21 years old or older by checking below:</em></small>
+                        </div>
+                        <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-3">
+                            <input required name="over_21" type="checkbox" class="form-check-input" id="over_21">
+                            <label class="form-check-label" for="over_21">I am over the age of 21.</label>
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-success">Submit</button>
