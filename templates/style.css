@@ -1,0 +1,162 @@
+body {
+    height:100vh;
+    color: white !important;
+    font-family: 'Raleway', 'Arial Narrow', 'Avant Garde', Arial, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.bgColor {
+    background-color: black;
+}
+
+.bgImg {
+    background-image: url('Burger60.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    position: relative;
+}
+
+ul.navbar-nav li a, ul.navbar-nav li a:visited {
+    color: #8bc34a !important;
+}
+
+ul.navbar-nav li a:hover, ul.navbar-nav li a:active {
+    color: #fff !important;
+}
+
+ul.navbar-list {
+    width: 100%;
+}
+
+div.events li a {
+    color:  #fff !important;
+}
+
+/* Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap */
+@media (min-width: 10px) and (max-width: 575px) {
+    .logo-image {
+        max-width: 250px;
+        display: block;
+    }
+    .nav-custom {
+        min-width: 375px;
+    }
+    nav.navbar-btn {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index:9;
+        background-color: black;
+    }
+    .navbar-toggler-icon {
+        display: block;
+        width: 18px;
+        height: 1px;
+        border-radius: 1px;
+        z-index: 100;
+    }
+    .twitter-box {
+        text-align: center;
+        outline: 1px solid white;
+    }
+    .events {
+        padding-left: 20px;
+        font-size: 12px;
+        outline: 1px solid white;
+    }
+    .menu-box {
+        text-align: center;
+        outline: 1px solid white;
+    }
+    .bios {
+        font-size: 12px;
+        font-weight: 100;
+    }
+    .bios-img {
+        background-color: white;
+    }
+    #fullCarousel{
+        position:absolute;
+        min-width: 375px;
+        max-width: 576px;
+        top:0;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .logo-image {
+        max-width: 300px;
+    }
+    nav.navbar-btn {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index:9;
+        background-color: black;
+    }
+    .navbar-toggler-icon {
+        display: block;
+        width: 18px;
+        height: 1px;
+        border-radius: 1px;
+        z-index: 100;
+    }
+    .bar-pics {
+        outline: 1px solid white;
+    }
+    .twitter-box {
+        text-align: center;
+        outline: 1px solid white;
+    }
+    .events {
+        text-align: center;
+        font-size: 12px;
+        outline: 1px solid white;
+    }
+    .menu-box {
+        text-align: center;
+        outline: 1px solid white;
+    }
+    .bios {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 100;
+    }
+    .bios-img {
+        margin-bottom: 10px;
+        background-color: white;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    nav.navbar-btn {
+        position: relative;
+        background-color: transparent;
+        max-width: 90%;
+    }
+    .logo-image {
+        max-width: 400px;
+    }
+
+    #navbarContent {
+        flex-wrap: wrap; 
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
