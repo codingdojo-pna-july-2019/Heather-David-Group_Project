@@ -1,3 +1,9 @@
+try:
+    import json
+except ImportError:
+    import simplejson as json
+import requests
+import tweepy
 import re
 from flask import Flask, render_template, redirect, request, session, flash, url_for
 from flask_bcrypt import Bcrypt
@@ -16,6 +22,20 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
+# Variables that contains the user credentials to access Twitter API 
+ACCESS_TOKEN = '2895347772-h5AQcBcROVXtFjU7MAjTk5qTrsyPAq4mKDcQEiT'
+ACCESS_SECRET = 'pwDq0vbZM8f6eU6PpRQBvZvOnBnZ4kSl1Nx2r6pGOohmT'
+CONSUMER_KEY = 'onZMubRXQ3Cdc7ZSRB14QyRWj'
+CONSUMER_SECRET = 'f3i3OgcRtiVYj0wMGIB9dL4ufzKD3XWDTo1vxEh2PS6qniILv1'
+
+# Setup tweepy to authenticate with Twitter credentials:
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+
+# Create the api to connect to twitter with your creadentials
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
 
 
 # User Database
@@ -161,6 +181,15 @@ class Liquor(db.Model):
 ################
 @app.route("/")
 def index():
+	f = open('test_tweets.txt', 'w+')
+	for tweet in tweepy.Cursor(api.search, q='peopleareawesome', lang='en').items(10):
+		cur_text = tweet.id
+
+		f.write(str(cur_text) + "\n")
+	f.close()
+	# sfo_trends = api.trends_place(id =2487956)
+	# print(json.dumps(sfo_trends, indent=4))
+	
 	return render_template("index.html")
 
 
@@ -395,5 +424,3 @@ def update_event_type():
 
 if __name__=="__main__":
 	app.run(debug=True)
-
-    

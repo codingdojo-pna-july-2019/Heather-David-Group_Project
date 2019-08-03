@@ -64,9 +64,7 @@ No media query since this is the default in Bootstrap */
         outline: 1px solid white;
     }
     .events {
-        padding-left: 20px;
         font-size: 12px;
-        outline: 1px solid white;
     }
     .menu-box {
         text-align: center;
@@ -116,7 +114,6 @@ No media query since this is the default in Bootstrap */
     .events {
         text-align: center;
         font-size: 12px;
-        outline: 1px solid white;
     }
     .menu-box {
         text-align: center;
