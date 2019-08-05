@@ -9,22 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-
-      #tweet {
-        width: 400px !important;
-      }
-
-      #tweet iframe {
-        border: none !important;
-        box-shadow: none !important;
-      }
-
-    </style>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <title>J Michael's</title>
 </head>
-<body class="">
-    <div class="bgColor bgImg pb-4">
+<body class="bgColor container-fluid custom-img-bg">
+    <div class="bgImg pb-4">
         <nav class="navbar nav-custom mx-auto">
             <div class="container">
                 <ul class="nav navbar-nav navbar-logo mx-auto">
@@ -83,14 +72,14 @@
             <div class="col-md addr"><p>(425) 242-4773</p></div>
         </div>
     </div>
-    <div class="container-fluid pt-5 events"><a id="specialevents"></a>
+    <div class="rowColor container-fluid pt-5 events"><a id="specialevents"></a>
         <!-- start feedwind code --> 
         <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script>
         <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script> -->
         <!-- end feedwind code -->
     </div>
     <div class="container-fluid pb-5">
-        <div class="bgColor row">
+        <div class="row">
             <div class="col-sm bar-pics"><a id="pics"></a>
                 <div id="fullCarousel2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
@@ -118,23 +107,38 @@
                 </div>
             </div>
             <div class="col-sm twitter-box pt-3"><a id="twitterfeed"></a>
-                <!-- <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-                <h6>Twitter Feed:</h6>
-                <p class="tweet-text">tweet</p>
-                <p class="tweet-text">tweet</p>
-                <p class="tweet-text">tweet</p>
+                <div id="fullCarousel3" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <h2>Twitter<br/>{{ cur_tweet_q }}</h2>
+                        </div>
+                        {% for tweetID in cur_tweets %}
+                        <div class="carousel-item">
+                            <div class="container-fluid" name="tweet" tweetID="{{ tweetID }}"></div>
+                        </div>
+                        {% endfor %}
+                        <a class="carousel-control-prev carousel-custom" href="#fullCarousel3" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon text-success" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next carousel-custom" href="#fullCarousel3" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="bgColor container-fluid menu-box">
+    <div class="container-fluid menu-box">
         <a id="menu"></a>
         <p>Menu</p>
     </div>
-    <div class="bgColor container-fluid menu-box">
+    <div class="container-fluid menu-box">
         <p>Drink Menu</p><a id="taps"></a>
         <p>Top Shelf</p><a id="liquor"></a>
     </div>
-    <div class="bgColor container-fluid bios">
+    <div class="container-fluid bios">
         <h6>Employee Bios:</h6>
         <div class="media">
             <img class="align-self-start mr-3 bios-img" src="static/img/BioIcon1.png" alt="Generic placeholder image">
@@ -152,7 +156,6 @@
             <img class="ml-3 bios-img" src="static/img/BioIcon2.png" alt="Generic placeholder image">
         </div>
     </div>
-    <div id="tweet" tweetID="1157711926719156230"></div>
     <nav class="navbar navbar-expand">
         <div class="mx-auto">
             <ul class="navbar-nav">
@@ -171,31 +174,7 @@
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script sync src="https://platform.twitter.com/widgets.js"></script>
 
-
-<script sync src="https://platform.twitter.com/widgets.js"></script>
-
-<script>
-
-  window.onload = (function(){
-
-    var tweet = document.getElementById("tweet");
-    var id = tweet.getAttribute("tweetID");
-
-    twttr.widgets.createTweet(
-      id, tweet, 
-      {
-        conversation : 'none',    // or all
-        cards        : 'hidden',  // or visible 
-        linkColor    : '#cc0000', // default is blue
-        theme        : 'light'    // or dark
-      });
-    // .then (function (el) {
-    //   el.contentDocument.querySelector(".footer").style.display = "none";
-    // });
-
-  });
-
-</script>
 </body>
 </html>

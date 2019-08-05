@@ -12,11 +12,26 @@ ul {
     background-color: black;
 }
 
+.rowColor {
+    background-color: white;
+}
+
 .bgImg {
     background-image: url('../img/Burger60.png');
     background-repeat: no-repeat;
     background-position: center; 
     position: relative;
+}
+
+[name=tweet] {
+    max-width: 500px !important;
+    max-height: 300px !important;
+    padding: auto !important;
+}
+
+[name=tweet] iframe {
+    border: none !important;
+    box-shadow: none !important;
 }
 
 ul.navbar-nav li a, ul.navbar-nav li a:visited {
@@ -61,14 +76,14 @@ No media query since this is the default in Bootstrap */
     }
     .twitter-box {
         text-align: center;
-        outline: 1px solid white;
+        /*outline: 1px solid white;*/
     }
     .events {
         font-size: 12px;
     }
     .menu-box {
         text-align: center;
-        outline: 1px solid white;
+        /*outline: 1px solid white;*/
     }
     .bios {
         font-size: 12px;
@@ -105,11 +120,11 @@ No media query since this is the default in Bootstrap */
         z-index: 100;
     }
     .bar-pics {
-        outline: 1px solid white;
+        /*outline: 1px solid white;*/
     }
     .twitter-box {
         text-align: center;
-        outline: 1px solid white;
+        /*outline: 1px solid white;*/
     }
     .events {
         text-align: center;
@@ -117,7 +132,7 @@ No media query since this is the default in Bootstrap */
     }
     .menu-box {
         text-align: center;
-        outline: 1px solid white;
+        /*outline: 1px solid white;*/
     }
     .bios {
         text-align: center;
