@@ -23,9 +23,13 @@ ul {
     position: relative;
 }
 
+.carousel-row {
+    min-height: 400px !important;
+}
+
 [name=tweet] {
     max-width: 500px !important;
-    max-height: 300px !important;
+    max-height: 325px !important;
     padding: auto !important;
 }
 
@@ -118,9 +122,6 @@ No media query since this is the default in Bootstrap */
         height: 1px;
         border-radius: 1px;
         z-index: 100;
-    }
-    .bar-pics {
-        /*outline: 1px solid white;*/
     }
     .twitter-box {
         text-align: center;
