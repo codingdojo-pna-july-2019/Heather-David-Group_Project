@@ -5,86 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/main.css')}}">
-    <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+    <!-- <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}"> -->
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sign_up.js') }}"></script>
     <title>Sign Up</title>
 </head>
-<body class="bgColor">
-    <div class="bgImg pb-4">
-        <nav class="navbar nav-custom mx-auto">
-            <div class="container">
-                <ul class="nav navbar-nav navbar-logo mx-auto">
-                    <li class="nav-item">
-                        <a><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
-            <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="/">HOMEPAGE</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<body class="bgColor bgImg">
+    <div class="pb-4">
+        {% include 'partials/header.html' %}
         <div class="container-fluid text-center">
-            <div class="col-md addr">
+            <div class="col-md mb-5 addr">
                 <p class="mb-0">15770 Redmond Way</p>
                 <p class="mb-0">Redmond, WA 98052</p>
                 <p class="mb-1">(425) 242-4773</p>
                 <p class="mb-3">email@jmichaels.com</p>
             </div>
             <div class="container-fluid">
-                <div class="container-flex mx-auto">
-                    <form action="/submitSignUp" method="post" onsubmit="return checkForm(this);">
-                        <div class="form-group input-group">
-                            <input name="fname" class="form-control" placeholder="First Name" type="text">
+                <div class="container-flex mx-auto max-width-custom-md">
+                    <form action="/submit/signup" method="POST" id="frmSignUp"> <!-- onsubmit="return checkForm(this);" -->
+                        <div class="form-group">
+                            <input name="fname" class="form-control" aria-describedby="fnameErr" placeholder="First Name" type="text">
+                            <span id="err_msg_fname"></span>
                         </div>
-                        <div class="form-group input-group">
-                            <input name="lname" class="form-control" placeholder="Last Name" type="text">
+                        <div class="form-group">
+                            <input name="lname" class="form-control" aria-describedby="lnameErr" placeholder="Last Name" type="text">
+                            <span id="err_msg_lname"></span>
                         </div>
                         <div class="ml-3">
                             <small class="form-text text-left"><em>*Your username will displayed in place of your name for events such as potluck sign-up sheets.</em></small>
                         </div>
-                        <div class="form-group input-group">
-                            <input name="username" class="form-control" placeholder="Username" type="text">
+                        <div class="form-group">
+                            <input name="uname" class="form-control" aria-describedby="unameErr" placeholder="Username" type="text">
+                            <span id="err_msg_uname"></span>
                         </div>
-                        <div class="form-group input-group">
-                            <input name="email" class="form-control" placeholder="Email address" type="email">
+                        <div class="form-group">
+                            <input name="email" class="form-control" aria-describedby="emailErr" placeholder="Email address" type="email">
+                            <span id="err_msg_email"></span>
                         </div>
-                        <div class="form-group input-group">
-                            <input name="password" class="form-control" placeholder="Password" type="email">
+                        <div class="form-group">
+                            <input name="password" class="form-control" aria-describedby="pwErr" placeholder="Password" type="password">
+                            <span id="err_msg_pw"></span>
                         </div>
-                        <div class="form-group input-group">
-                            <input name="confirm_password" class="form-control" placeholder="Confirm Password" type="password">
+                        <div class="form-group">
+                            <input name="confirm_password" class="form-control" aria-describedby="pwconfirmErr" placeholder="Confirm Password" type="password">
+                            <span id="err_msg_pw_confirm"></span>
                         </div>
                         <div class="mb-2">
                             <small class="form-text text-center"><em>What events are you interested in receiving updates for?</em></small>
                         </div>
                         <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
-                            <input name="karaoke" type="checkbox" class="form-check-input" id="karaoke">
+                            <input name="karaoke" type="checkbox" class="form-check-input" id="karaoke" value="1">
                             <label class="form-check-label mr-3" for="karaoke">Karaoke</label>
                         </div>
                         <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
-                            <input name="trivia" type="checkbox" class="form-check-input" id="trivia">
+                            <input name="trivia" type="checkbox" class="form-check-input" id="trivia" value="1">
                             <label class="form-check-label mr-3" for="trivia">Trivia</label>
                         </div>
                         <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
-                            <input name="billiards" type="checkbox" class="form-check-input" id="billiards">
+                            <input name="billiards" type="checkbox" class="form-check-input" id="billiards" value="1">
                             <label class="form-check-label mr-3" for="billiards">Billiards</label>
                         </div>
                         <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
-                            <input name="sunday_football" type="checkbox" class="form-check-input" id="sunday_football">
+                            <input name="sunday_football" type="checkbox" class="form-check-input" id="sunday_football" value="1">
                             <label class="form-check-label mr-3" for="sunday_football">Sunday Football</label>
                         </div>
                         <div class="form-check form-check-inline flex-wrap justify-content-sm-start mb-2">
-                            <input name="potluck" type="checkbox" class="form-check-input" id="potluck">
+                            <input name="potluck" type="checkbox" class="form-check-input" id="potluck" value="1">
                             <label class="form-check-label mr-3" for="potluck">Potlucks</label>
                         </div>
                         <div class="ml-1 mb-1">
@@ -95,7 +83,7 @@
                             <label class="form-check-label" for="over_21">I am over the age of 21.</label>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success" disabled>Submit</button>
                         </div>                                                                                   
                     </form>  
                 </div>
@@ -103,7 +91,22 @@
 
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand">
+        <div class="mx-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="#">JukeBox App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="/contactus">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="#">WiFi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

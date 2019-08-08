@@ -18,13 +18,31 @@ ul {
 
 .bgImg {
     background-image: url('../img/Burger60.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
     position: relative;
 }
 
+.bar-menu-display {
+    border: 5px solid white;
+}
+
+.bar-menu-display-inner {
+    border: 5px ridge white;
+    min-height: 600px;
+}
+
 .carousel-row {
     min-height: 400px !important;
+}
+
+.max-width-custom-md {
+    max-width: 1200px !important;
+}
+
+.max-width-custom-lg {
+    max-width: 1600px !important;
 }
 
 [name=tweet] {

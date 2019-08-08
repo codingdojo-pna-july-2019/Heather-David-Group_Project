@@ -1,0 +1,9 @@
+<div class="col-md-4">
+	<div><h5>{{ beer.beer_name }}</h5></div>
+	<div>{{ beer.beer_type }} {% if beer.nitro_flag %}(Nitro){% endif %}</div>
+	<div>{{ beer.brewery_name }}</div>
+	<div>
+		<span class="m-2">ABV: {{ beer.abv }}%</span>
+		<span class="m-2">IBU: {{ beer.ibu }}</span>
+	</div>
+</div>

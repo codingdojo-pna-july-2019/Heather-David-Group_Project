@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/main.css')}}">
+    <!-- <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}"> -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <title>Admin Panel</title>
+</head>
+<body class="container-fluid">
+
+	<div class="container-flex mx-auto pb-4 text-body max-width-custom-lg">
+		
+		<nav class="navbar nav-custom mx-auto">
+		    <div class="container">
+		        <ul class="nav navbar-nav navbar-logo mx-auto">
+		            <li class="nav-item">
+		                <a><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+		<nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
+            <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
+                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                        <a class="nav-link text-nowrap nav-list-links" href="/">MAIN SITE</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="p-3" id="frmFoodContainer"></div>
+
+        <hr>
+
+        <div class="p-3" id="frmBeerContainer"></div>
+
+        <hr>
+
+        <div class="p-3" id="frmLiquorContainer"></div>
+
+        <hr>
+
+        {% if session.userid == 1 %}
+        <div class="p-3">
+            <h2 class="text-center font-weight-bold font-italic"><u>Add Admin</u></h2>
+            <div class="row">
+                <div class="col-md">
+                    <form action="/admin/add/user" method="POST">
+                        <div class="form-group">
+                            <input name="new_admin_email" class="form-control" placeholder="Enter a User's Email" type="text">
+                        </div>
+                        <div class="text-center">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            <ul>
+                                {% for category, message in messages %}
+                                    {% if category == 'err_new_admin' %}
+                                    <li class="font-weight-bold text-left text-danger">{{ message }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        {% endwith %}
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success">Add Admin</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="col-md">
+                    <form action="/admin/remove/user" method="POST">
+                        <div class="form-row">
+                            <select name="food_category" class="form-control custom-select">
+                                <option value="0" selected>Menu Category</option>
+                                <option value="1">Appetizer</option>
+                                <option value="2">Soup/Salad</option>
+                                <option value="3">Burger</option>
+                                <option value="4">Steak</option>
+                                <option value="5">Sandwich</option>
+                                <option value="6">Special</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-danger">Delete Admin</button>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+
+        <hr>
+        {% endif %}
+
+	</div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

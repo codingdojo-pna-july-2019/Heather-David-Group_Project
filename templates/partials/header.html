@@ -1,0 +1,61 @@
+<nav class="navbar nav-custom mx-auto">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-logo mx-auto">
+            <li class="nav-item">
+                <a href="/"><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
+    <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
+            <!-- <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/contactus">RESERVATIONS</a>
+            </li> -->
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/calendar">CALENDAR</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#pics">J. MICHAEL'S PICS</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#twitterfeed">TWITTER FEED</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#specialevents">SPECIAL EVENTS</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#menu">MENU</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#taps">TAPS</a>
+            </li>
+            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <a class="nav-link text-nowrap nav-list-links" href="/#liquor">LIQUOR</a>
+            </li>
+            {% if session.userid is defined %}
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link text-nowrap" href="/logout">LOGOUT</a>
+                </li>
+            {% else %}
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link text-nowrap" href="/signup">SIGN UP</a>
+                </li>
+                <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <a class="nav-link text-nowrap nav-list-links" href="/login">LOG IN</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% if session.userid is defined %}
+<div class="container-fluid text-right">
+    <div class="col-md">
+        <h5><i>Welcome back, {{ session.name }}!</i></h5>
+    </div>
+</div>
+{% endif %}

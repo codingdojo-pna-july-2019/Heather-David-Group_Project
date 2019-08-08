@@ -5,53 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/main.css')}}">
-    <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+    <!-- <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}"> -->
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Contact Us</title>
 </head>
-<body class="bgColor">
-    <div class="bgImg pb-4">
-        <nav class="navbar nav-custom mx-auto">
-            <div class="container">
-                <ul class="nav navbar-nav navbar-logo mx-auto">
-                    <li class="nav-item">
-                        <a><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
-            <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="/">HOMEPAGE</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<body class="bgColor bgImg">
+    <div class="pb-4">
+        {% include 'partials/header.html' %}
         <div class="container-fluid text-center">
-            <div class="col-md addr">
+            <div class="col-md mb-5 addr">
                 <h4><em>If you would like to inquire about making reservations, please give us a call.</em></h4>
                 <p class="mb-0">15770 Redmond Way</p>
                 <p class="mb-0">Redmond, WA 98052</p>
                 <p class="mb-1">(425) 242-4773</p>
                 <p class="mb-3">email@jmichaels.com</p>
             </div>
-            <div class="container-fluid">
-                <div class="container-flex mx-auto">
+            <div class="container-fluid pt-3">
+                <div class="container-flex mx-auto max-width-custom-md">
                     <form action="mailto:armysnowwhite@yahoo.com?Subject=Contact_JMichaels" method="post" enctype="text/plain" onsubmit="location.href='thanks.html';">
                         <div class="form-group input-group">
-                            <input name="name" class="form-control" placeholder="Full name" type="text">
+                            {% if user_name|length %}
+                            <input name="name" class="form-control" type="text" value="{{ user_name }}">
+                            {% else %}
+                            <input name="name" class="form-control" placeholder="Full Name" type="text">
+                            {% endif %}
                         </div>
                         <div class="form-group input-group">
+                            {% if user_email|length %}
+                            <input name="email" class="form-control" type="email" value="{{ user_email }}">
+                            {% else %}
                             <input name="email" class="form-control" placeholder="Email address" type="email">
+                            {% endif %}
                         </div>
                         <div class="form-group input-group">
-                            <textarea class = "form-control" rows = "5" name="message" placeholder = "...message us"></textarea>
+                            <textarea class="form-control" rows="5" name="message" placeholder="...message us"></textarea>
                         </div> 
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-success">Submit</button>
@@ -61,7 +50,22 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand">
+        <div class="mx-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="#">JukeBox App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="/contactus">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-list-links" href="#">WiFi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

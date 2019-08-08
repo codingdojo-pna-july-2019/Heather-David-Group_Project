@@ -1,0 +1,9 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'err_email' %}
+            <small id="emailErr" class="form-text text-left font-weight-bold text-danger" name="err_msg">{{ message }}</small>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}

@@ -5,172 +5,292 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/main.css')}}">
-    <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+    <!-- <link rel = "stylesheet" type = "text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}"> -->
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <title>J Michael's</title>
 </head>
-<body class="bgColor container-fluid custom-img-bg">
-    <div class="bgImg pb-4">
-        <nav class="navbar nav-custom mx-auto">
-            <div class="container">
-                <ul class="nav navbar-nav navbar-logo mx-auto">
-                    <li class="nav-item">
-                        <a><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
-                    </li>
-                </ul>
+<body class="bgColor container-fluid">
+    <div class="container-flex">
+        <div class="bgImg">
+            <div class="mx-auto pb-4 max-width-custom-lg">
+                <nav class="navbar nav-custom mx-auto">
+                    <div class="container">
+                        <ul class="nav navbar-nav navbar-logo mx-auto">
+                            <li class="nav-item">
+                                <a><img class="logo-image" src="static/img/brand.png" alt="Brand"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
+                    <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
+                            <!-- <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="/contactus">RESERVATIONS</a>
+                            </li> -->
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="/calendar">CALENDAR</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#pics">J. MICHAEL'S PICS</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#twitterfeed">TWITTER FEED</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#specialevents">SPECIAL EVENTS</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#menu">MENU</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#taps">TAPS</a>
+                            </li>
+                            <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                <a class="nav-link text-nowrap nav-list-links" href="#liquor">LIQUOR</a>
+                            </li>
+                            {% if session.userid is defined %}
+                                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                    <a class="nav-link text-nowrap" href="/logout">LOGOUT</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                    <a class="nav-link text-nowrap" href="/signup">SIGN UP</a>
+                                </li>
+                                <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
+                                    <a class="nav-link text-nowrap nav-list-links" href="/login">LOG IN</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+                {% if session.userid is defined %}
+                <div class="container-fluid text-right">
+                    <div class="col-md">
+                        <h5><i>Welcome back, {{ session.name }}!</i></h5>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="container-fluid text-center">
+                    <div class="col-md">
+                        <h5>Locally owned Pub in downtown Redmond</h5>
+                        <p>"Chow down on all of your pub favorites at J Michael's Pub & Eatery in Redmond. Beer, wine, and more are also available from this restaurant's extensive drink list. At J Michael's Pub & Eatery, diners can score happy hour deals. Need to catch up on some work or the latest news? Get online at J Michael's Pub & Eatery with their complimentary wifi.</p><p>No suit, no problem! The dress code at laid-back J Michael's Pub & Eatery is ultra casual. Carry-out is also available for those who prefer to enjoy this restaurant's cooking from the comfort of their own home.</p><p>Restaurant offers free parking in the lot next door. Make use of the safe and efficient bike parking at J Michael's Pub & Eatery.</p><p>Typical diners should plan to spend about $30 per person on J Michael's Pub & Eatery's moderately priced fare. You can stop by at almost any time, since J Michael's Pub & Eatery offers breakfast, lunch, and dinner. Are you ready for a bite of pure heaven with J Michael's Pub & Eatery's delicious pub food?"<small>   from: https://www.groupon.com/biz/redmond-wa/j-michaels-pub-eatery</small></p>
+                    </div>
+                    <div class="col-md addr"><p>15770 Redmond Way</p></div>
+                    <div class="col-md addr"><p>Redmond, WA 98052</p></div>
+                    <div class="col-md addr"><p>(425) 242-4773</p></div>
+                </div>
             </div>
-        </nav>
-        <nav class="navbar navbar-btn navbar-expand-md mx-auto navbar-dark">
-            <button class="navbar-toggler" id="nav-btn-position" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav d-flex justify-content-center flex-md-wrap navbar-list">
-                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap" href="/signup">SIGN UP</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#">LOG IN</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="/contactus">RESERVATIONS</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="/calendar">CALENDAR</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#pics">J. MICHAEL'S PICS</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#twitterfeed">TWITTER FEED</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#specialevents">SPECIAL EVENTS</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#menu">MENU</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#taps">TAPS</a>
-                    </li>
-                    <li class="nav-item data-toggle=" data-toggle="collapse" data-target=".navbar-collapse.show">
-                        <a class="nav-link text-nowrap nav-list-links" href="#liquor">LIQUOR</a>
-                    </li>
-                </ul>
+            <div class="container-fluid pt-5 events max-width-custom-lg"><a id="specialevents"></a>
+                <!-- start feedwind code --> 
+                <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script>
+                <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script> -->
+                <!-- end feedwind code -->
             </div>
-        </nav>
-        <div class="container-fluid text-center">
-            <div class="col-md">
-                <h5>Locally owned Pub in downtown Redmond</h5>
-                <p>"Chow down on all of your pub favorites at J Michael's Pub & Eatery in Redmond. Beer, wine, and more are also available from this restaurant's extensive drink list. At J Michael's Pub & Eatery, diners can score happy hour deals. Need to catch up on some work or the latest news? Get online at J Michael's Pub & Eatery with their complimentary wifi.</p><p>No suit, no problem! The dress code at laid-back J Michael's Pub & Eatery is ultra casual. Carry-out is also available for those who prefer to enjoy this restaurant's cooking from the comfort of their own home.</p><p>Restaurant offers free parking in the lot next door. Make use of the safe and efficient bike parking at J Michael's Pub & Eatery.</p><p>Typical diners should plan to spend about $30 per person on J Michael's Pub & Eatery's moderately priced fare. You can stop by at almost any time, since J Michael's Pub & Eatery offers breakfast, lunch, and dinner. Are you ready for a bite of pure heaven with J Michael's Pub & Eatery's delicious pub food?"<small>   from: https://www.groupon.com/biz/redmond-wa/j-michaels-pub-eatery</small></p>
-            </div>
-            <div class="col-md addr"><p>15770 Redmond Way</p></div>
-            <div class="col-md addr"><p>Redmond, WA 98052</p></div>
-            <div class="col-md addr"><p>(425) 242-4773</p></div>
         </div>
-    </div>
-    <div class="rowColor container-fluid pt-5 events"><a id="specialevents"></a>
-        <!-- start feedwind code --> 
-        <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script>
-        <!-- <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="114002/"></script> -->
-        <!-- end feedwind code -->
-    </div>
-    <div class="container-fluid pb-5 carousel-row">
-        <div class="row">
-            <div class="col-sm bar-pics pt-3"><a id="pics"></a>
-                <div id="fullCarousel2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img class="img-fluid" src="static/img/jm1.jpg" alt="First slide">
+        <div class="container-fluid pb-5 carousel-row max-width-custom-lg">
+            <div class="row">
+                <div class="col-sm bar-pics pt-3"><a id="pics"></a>
+                    <div id="fullCarousel2" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="img-fluid" src="static/img/jm1.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid" src="static/img/jm2.jpg" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid" src="static/img/jm3.jpg" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid" src="static/img/jm4.jpg" alt="Fourth slide">
+                            </div>
+                            <a class="carousel-control-prev carousel-custom" href="#fullCarousel2" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next carousel-custom" href="#fullCarousel2" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid" src="static/img/jm2.jpg" alt="Second slide">
+                    </div>
+                </div>
+                <div class="col-sm twitter-box pt-3"><a id="twitterfeed"></a>
+                    <div id="fullCarousel3" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <h2>Twitter<br/>{{ cur_tweet_q }}</h2>
+                            </div>
+                            {% for tweetID in cur_tweets %}
+                            <div class="carousel-item">
+                                <div class="container-fluid" name="tweet" tweetID="{{ tweetID }}"></div>
+                            </div>
+                            {% endfor %}
+                            <a class="carousel-control-prev carousel-custom" href="#fullCarousel3" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon text-success" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next carousel-custom" href="#fullCarousel3" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid" src="static/img/jm3.jpg" alt="Third slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="img-fluid" src="static/img/jm4.jpg" alt="Fourth slide">
-                        </div>
-                        <a class="carousel-control-prev carousel-custom" href="#fullCarousel2" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next carousel-custom" href="#fullCarousel2" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm twitter-box pt-3"><a id="twitterfeed"></a>
-                <div id="fullCarousel3" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <h2>Twitter<br/>{{ cur_tweet_q }}</h2>
-                        </div>
-                        {% for tweetID in cur_tweets %}
-                        <div class="carousel-item">
-                            <div class="container-fluid" name="tweet" tweetID="{{ tweetID }}"></div>
-                        </div>
+        </div>
+        <div class="container-fluid menu-box mb-5 max-width-custom-lg"><a id="menu"></a>
+            <h2 class="font-weight-bold font-italic"><u>MENU</u></h2>
+            <div class="m-3 bar-menu-display">
+
+                <div class="row p-3 m-3 bar-menu-display-inner">
+                    
+                    <div class="col-md-4">
+                        <h4 class="border-bottom pb-2">APPETIZERS</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 1 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
                         {% endfor %}
-                        <a class="carousel-control-prev carousel-custom" href="#fullCarousel3" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon text-success" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next carousel-custom" href="#fullCarousel3" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
+
+                    <div class="col-md-4">
+                        <h4 class="border-bottom pb-2">BURGERS</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 3 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <h4 class="border-bottom mt-3 pb-2">SOUP & SALAD</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 2 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        <h4 class="border-bottom pb-2">STEAKS</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 4 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <h4 class="border-bottom mt-3 pb-2">SANDWICHES</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 5 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <h4 class="border-bottom mt-3 pb-2">SPECIALS</h4>
+                        {% for food in all_food %}
+                            {% if food.category == 6 %}
+                                {% include 'partials/food_item_display.html' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="container-fluid mt-auto">
+                        <p class="font-italic text-muted">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness.*</p>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="container-fluid menu-box mb-5 max-width-custom-lg"><a id="taps"></a>
+            <h2 class="font-weight-bold font-italic"><u>BEERS</u></h2>
+            <div class="m-3 bar-menu-display">
+
+                <div class="row p-3 m-3 bar-menu-display-inner">
+
+                    <div class="col">
+                        <div class="row">
+                        {% for beer in all_beers %}
+                            {% if loop.index % 3 == 0 %}
+                            <div class="row">
+                            {% endif %}
+                            {% include 'partials/beer_item_display.html' %}
+                            {% if loop.index % 3 == 0 %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="container-fluid menu-box mb-5 max-width-custom-lg"><a id="liquor"></a>
+            <h2 class="font-weight-bold font-italic"><u>TOP SHELF LIQUORS</u></h2>
+            <div class="m-3 bar-menu-display">
+
+                <div class="row p-3 m-3 bar-menu-display-inner">
+
+                    <div class="col">
+                        <div class="row">
+                        {% for liquor in all_liquors %}
+                            {% if loop.index % 3 == 0 %}
+                            <div class="row">
+                            {% endif %}
+                            {% include 'partials/liquor_item_display.html' %}
+                            {% if loop.index % 3 == 0 %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="container-fluid bios mb-5 max-width-custom-lg">
+            <h2 class="font-weight-bold font-italic"><u>EMPLOYEE BIOS</u></h2>
+            <!-- <h6>Employee Bios:</h6> -->
+            <div class="media">
+                <img class="align-self-start mr-3 bios-img" src="static/img/BioIcon1.png" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h6 class="mt-0">Bartender:</h6>
+                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid menu-box">
-        <a id="menu"></a>
-        <p>Menu</p>
-    </div>
-    <div class="container-fluid menu-box">
-        <p>Drink Menu</p><a id="taps"></a>
-        <p>Top Shelf</p><a id="liquor"></a>
-    </div>
-    <div class="container-fluid bios">
-        <h6>Employee Bios:</h6>
-        <div class="media">
-            <img class="align-self-start mr-3 bios-img" src="static/img/BioIcon1.png" alt="Generic placeholder image">
-            <div class="media-body">
-                <h6 class="mt-0">Bartender:</h6>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <div class="media">
+                <div class="media-body">
+                    <h6 class="mt-0 mb-1">Bartender:</h6>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+                <img class="ml-3 bios-img" src="static/img/BioIcon2.png" alt="Generic placeholder image">
             </div>
         </div>
-        <div class="media">
-            <div class="media-body">
-                <h6 class="mt-0 mb-1">Bartender:</h6>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        <nav class="navbar navbar-expand">
+            <div class="mx-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link nav-list-links" href="#">JukeBox App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-list-links" href="/contactus">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-list-links" href="#">WiFi</a>
+                    </li>
+                </ul>
             </div>
-            <img class="ml-3 bios-img" src="static/img/BioIcon2.png" alt="Generic placeholder image">
-        </div>
+        </nav>
     </div>
-    <nav class="navbar navbar-expand">
-        <div class="mx-auto">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link nav-list-links" href="#">JukeBox App</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-list-links" href="/contactus">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-list-links" href="#">WiFi</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

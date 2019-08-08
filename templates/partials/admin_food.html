@@ -1,0 +1,80 @@
+<h2 class="text-center font-weight-bold font-italic"><u>Food Items</u></h2>
+
+<form id="frmDeleteFood" method="POST">
+	<input name="update_type" type="hidden" value="delete">
+	<input name="food_id" type="hidden">
+</form>
+
+<form id="frmUpdateFood" method="POST">
+	<input name="update_type" type="hidden" value="status">
+	<div class="d-flex align-content-start flex-wrap">
+		{% for item in all_food %}
+		<div class="form-group p-2" style="width: 275px;">
+			{% if item.is_active %}
+				<input name="food_id_cb" id="food_cb_{{ item.id }}" type="checkbox" value="{{ item.id }}" checked>
+			{% else %}
+				<input name="food_id_cb" id="food_cb_{{ item.id }}" type="checkbox" value="{{ item.id }}">
+			{% endif %}
+			<label class="form-check-label" for="food_cb_{{ item.id }}">{{ item.name }} ${{ item.price }}</label>
+			<button type="button" class="btn btn-danger font-weight-bold" name="btn_delete_food" id="{{ item.id }}">X</button>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="form-group text-center">
+		<button type="button" class="btn btn-info" name="btn_status_food">Update Active List</button>
+	</div>
+</form>
+
+
+<form id="frmNewFood" method="POST">
+	<div class="form-row p-2">
+		<input name="update_type" type="hidden" value="new">
+		<div class="col-sm mt-auto">
+		    <div class="form-group">
+		        <input name="food_name" class="form-control" placeholder="Menu Item Name" type="text">
+		    </div>
+		    <div class="form-group">
+		    	<textarea name="food_description" class="form-control" rows="3" placeholder="Description..."></textarea>
+		    </div>
+		    <div class="form-row">
+		    	<div class="form-group col-sm">
+					<select name="food_category" class="form-control custom-select">
+						<option value="0" selected>Menu Category</option>
+						<option value="1">Appetizer</option>
+						<option value="2">Soup/Salad</option>
+						<option value="3">Burger</option>
+						<option value="4">Steak</option>
+						<option value="5">Sandwich</option>
+						<option value="6">Special</option>
+					</select>
+			    </div>
+			    <div class="form-group col-sm">
+			    	<div class="input-group">
+			    		<div class="input-group-prepend">
+			    			<div class="input-group-text">$</div>
+			    		</div>
+			    		<input name="food_price" class="form-control text-right" placeholder="Price (9.99)" type="number" min="0.00" step="0.01" max="99999.99">
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="col-sm mt-auto pl-4">
+			<div class="form-row form-group">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+	            {% if messages %}
+	            <ul>
+	                {% for category, message in messages %}
+	                    {% if category == 'err_food' %}
+	                    <li class="font-weight-bold text-left text-danger">{{ message }}</li>
+	                    {% endif %}
+	                {% endfor %}
+				</ul>
+	            {% endif %}
+	        {% endwith %}
+	        </div>
+		    <div class="form-row form-group text-left">
+		        <button type="button" class="btn btn-primary" name="btn_new_food">Add New</button>
+		    </div>
+		</div>
+	</div>
+</form>
